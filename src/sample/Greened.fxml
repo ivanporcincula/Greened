@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Greened">
+   <children>
+      <ImageView fitHeight="872.0" fitWidth="503.0" layoutX="-32.0" layoutY="-111.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Background/messenger.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="profile" layoutX="-1.0" layoutY="125.0" prefHeight="450.0" prefWidth="434.0">
+         <children>
+            <ImageView fx:id="setPicture" fitHeight="150.0" fitWidth="200.0" layoutX="138.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Profile/default.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="name" fill="WHITE" fontSmoothingType="LCD" layoutX="90.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ivan Porcincula" textAlignment="CENTER" wrappingWidth="254.4558868408203">
+               <font>
+                  <Font name="Cambria Bold" size="19.0" />
+               </font></Text>
+            <Text fx:id="number" fill="WHITE" fontSmoothingType="LCD" layoutX="90.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="09688542409" textAlignment="CENTER" wrappingWidth="254.4558868408203">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font></Text>
+            <Text fx:id="username" fill="WHITE" fontSmoothingType="LCD" layoutX="90.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ivanporcincula" textAlignment="CENTER" wrappingWidth="254.4558868408203">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font></Text>
+            <TextField fx:id="directory" layoutX="108.0" layoutY="353.0" prefHeight="25.0" prefWidth="218.0" promptText="Please input the directory" style="-fx-background-radius: 15;" />
+            <Button fx:id="addPhoto" layoutX="130.0" layoutY="389.0" mnemonicParsing="false" onAction="#setProfilePhoto" onMouseClicked="#profileButtonHandler" prefHeight="16.0" prefWidth="175.0" stylesheets="@appStyling.css" text="Add profile photo" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="addContact" layoutX="154.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#addHandler2" prefHeight="29.0" prefWidth="127.0" stylesheets="@appStyling.css" text="Add contact" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="editName" layoutX="130.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#editNameHandler" prefHeight="16.0" prefWidth="175.0" stylesheets="@appStyling.css" text="Edit name" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="editNumber" layoutX="130.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#editNumberHandler" prefHeight="16.0" prefWidth="175.0" stylesheets="@appStyling.css" text="Edit contact number" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="doneName" layoutX="130.0" layoutY="366.0" mnemonicParsing="false" onMouseClicked="#doneNameHandler" prefHeight="16.0" prefWidth="175.0" stylesheets="@appStyling.css" text="Done" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="doneNumber" layoutX="130.0" layoutY="366.0" mnemonicParsing="false" onMouseClicked="#doneNumberHandler" prefHeight="16.0" prefWidth="175.0" stylesheets="@appStyling.css" text="Done" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="newName" alignment="CENTER" layoutX="119.0" layoutY="220.0" onKeyReleased="#nameFilled" promptText="Name" style="-fx-background-radius: 15;" visible="false">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="newNumber" alignment="CENTER" layoutX="119.0" layoutY="260.0" onKeyReleased="#contactFilled" promptText="Contact Number" style="-fx-background-radius: 15;" visible="false">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="contacts" layoutY="125.0" prefHeight="450.0" prefWidth="434.0" visible="false">
+         <children>
+            <ListView fx:id="contactList" layoutX="205.0" layoutY="14.0" prefHeight="385.0" prefWidth="212.0" />
+            <Button layoutX="344.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#removeContactHandler" prefHeight="29.0" prefWidth="77.0" stylesheets="@appStyling.css" text="Remove" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="275.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#sortHandler" prefHeight="29.0" prefWidth="66.0" stylesheets="@appStyling.css" text="Sort" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="205.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#viewHandler" prefHeight="29.0" prefWidth="66.0" stylesheets="@appStyling.css" text="View" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#addNewContactHandler" prefHeight="163.0" prefWidth="184.0" stylesheets="@bigButton.css" text="+Add new contact" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="searchName" layoutX="15.0" layoutY="23.0" prefHeight="25.0" prefWidth="184.0" promptText="Search contact by name/number/username" style="-fx-background-radius: 15;" />
+            <Button layoutX="33.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="29.0" prefWidth="149.0" stylesheets="@appStyling.css" text="Search contact" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Text fx:id="exists" layoutX="14.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="184.0">
+               <font>
+                  <Font name="Cambria" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="newContacts" layoutX="14.0" layoutY="133.0" prefHeight="435.0" prefWidth="411.0" visible="false">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="126.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Profile/default.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="inputName" alignment="CENTER" layoutX="107.0" layoutY="201.0" promptText="Name" style="-fx-background-radius: 15;">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font></TextField>
+            <TextField fx:id="inputNumber" alignment="CENTER" layoutX="107.0" layoutY="256.0" promptText="Contact Number" style="-fx-background-radius: 15;">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font></TextField>
+            <TextField fx:id="inputUser" alignment="CENTER" layoutX="107.0" layoutY="315.0" promptText="Username" style="-fx-background-radius: 15;">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font></TextField>
+            <Button layoutX="142.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#addHandler" prefHeight="29.0" prefWidth="127.0" stylesheets="@appStyling.css" text="Add contact" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="newMessage" layoutY="126.0" prefHeight="450.0" prefWidth="434.0" visible="false">
+         <children>
+            <TextField fx:id="contactInput" layoutX="22.0" layoutY="37.0" prefHeight="25.0" prefWidth="391.0" promptText="Contact Number or Full Name" style="-fx-background-radius: 15;" />
+            <TextArea fx:id="bodyMessage" layoutX="21.0" layoutY="82.0" prefHeight="299.0" prefWidth="391.0" promptText="Body of the message..." style="-fx-background-radius: 15;" />
+            <Button layoutX="21.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#sendMessage" prefHeight="29.0" prefWidth="391.0" stylesheets="@appStyling.css" text="Send Message" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="unreadMessages" layoutX="1.0" layoutY="126.0" prefHeight="450.0" prefWidth="434.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="352.0" layoutX="24.0" layoutY="25.0" stroke="GREEN" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="10.0" width="385.0" />
+            <Button layoutX="21.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#nextBtnHandler" prefHeight="29.0" prefWidth="391.0" stylesheets="@appStyling.css" text="Next Message" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextFlow layoutX="36.0" layoutY="36.0" prefHeight="331.0" prefWidth="362.0">
+               <children>
+                  <Text fx:id="unreadMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="337.13671875">
+                     <font>
+                        <Font name="Cambria" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="readMessages" layoutY="126.0" prefHeight="450.0" prefWidth="434.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="352.0" layoutX="24.0" layoutY="25.0" stroke="GREEN" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="10.0" width="385.0" />
+            <Button layoutX="21.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#readNxtBtnHandler" prefHeight="29.0" prefWidth="391.0" stylesheets="@appStyling.css" text="Next Message" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextFlow layoutX="36.0" layoutY="36.0" prefHeight="331.0" prefWidth="362.0">
+               <children>
+                  <Text fx:id="readMess" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="Cambria" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREEN" height="126.0" stroke="TRANSPARENT" strokeType="INSIDE" width="434.0" />
+      <ImageView fx:id="Menu" fitHeight="52.0" fitWidth="52.0" layoutX="44.0" layoutY="38.0">
+         <image>
+            <Image url="@Icons/menu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="closeMenu" fitHeight="52.0" fitWidth="52.0" layoutX="44.0" layoutY="38.0">
+         <image>
+            <Image url="@Icons/menu.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="127.0" opacity="0.05" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0" style="-fx-background-color: black;" />
+      <Text fill="WHITE" layoutX="141.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GREENED" textAlignment="CENTER" wrappingWidth="272.830078125">
+         <font>
+            <Font name="Cambria Bold" size="54.0" />
+         </font>
+      </Text>
+      <Button fx:id="exit" layoutX="388.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#profileButtonHandler" prefHeight="34.0" prefWidth="40.0" style="-fx-background-color: #008000; -fx-background-radius: 15;" text="X" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="22.0" />
+         </font>
+      </Button>
+      <VBox fx:id="menu" layoutY="125.0" prefHeight="450.0" prefWidth="197.0" style="-fx-background-color: green;">
+         <children>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button mnemonicParsing="false" onMouseClicked="#profileButtonHandler" prefHeight="72.0" prefWidth="254.0" stylesheets="@appStyling.css" text="Profile" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button mnemonicParsing="false" onMouseClicked="#contactsButtonHandler" prefHeight="72.0" prefWidth="256.0" stylesheets="@appStyling.css" text="Contacts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/20.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button mnemonicParsing="false" onMouseClicked="#newMessageButtonHandler" prefHeight="75.0" prefWidth="305.0" stylesheets="@appStyling.css" text="Write message" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/39.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button mnemonicParsing="false" onMouseClicked="#unreadMessagesButtonHandler" prefHeight="73.0" prefWidth="256.0" stylesheets="@appStyling.css" text="Unread messages" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/2.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button mnemonicParsing="false" onMouseClicked="#readMessagesButtonHandler" prefHeight="74.0" prefWidth="255.0" stylesheets="@appStyling.css" text="Read messages" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/17.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator opacity="0.05" prefWidth="200.0" style="-fx-background-color: black;" />
+            <Button fx:id="logout" mnemonicParsing="false" onMouseClicked="#logoutButtonHandler" prefHeight="74.0" prefWidth="255.0" stylesheets="@appStyling.css" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</Pane>
